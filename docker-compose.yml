@@ -1,0 +1,11 @@
+services:
+  ffc-dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ffc-dashboard
+    ports:
+      - "9378:80"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
