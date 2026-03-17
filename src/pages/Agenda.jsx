@@ -88,7 +88,7 @@ export function AgendaDashboard() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900">Dashboard de eventos</h1>
+      <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Dashboard de eventos</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Calendário para filtro por data */}
@@ -204,7 +204,7 @@ export function AgendaDashboard() {
 export function AgendaJogos() {
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900">Jogos</h1>
+      <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Jogos</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {matches.map((jogo) => (
           <div
@@ -234,7 +234,7 @@ export function AgendaJogos() {
 export function AgendaEventosBeneficentes() {
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900">Eventos beneficentes</h1>
+      <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Eventos beneficentes</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {eventosBeneficentes.map((ev) => (
           <div
@@ -300,7 +300,7 @@ export function AgendaEventosInternos() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900">Eventos internos do clube</h1>
+      <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Eventos internos do clube</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-4">

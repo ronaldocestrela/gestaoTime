@@ -80,7 +80,7 @@ export function FinanceiroLayout() {
 export function FinanceiroDashboard() {
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900">Dashboard / Resumo</h1>
+      <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Dashboard / Resumo</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {Object.values(financialKpis).map((kpi) => (
           <KpiCard key={kpi.label} label={kpi.label} value={kpi.value} />
@@ -135,7 +135,7 @@ export function FinanceiroDashboard() {
 export function FinanceiroContasReceber() {
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900">Contas a receber</h1>
+      <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Contas a receber</h1>
       <DataTable
         title="Lançamentos"
         columns={contasReceberColumns}
@@ -148,7 +148,7 @@ export function FinanceiroContasReceber() {
 export function FinanceiroContasPagar() {
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900">Contas a pagar</h1>
+      <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Contas a pagar</h1>
       <DataTable
         title="Lançamentos"
         columns={contasPagarColumns}

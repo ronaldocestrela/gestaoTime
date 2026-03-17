@@ -35,7 +35,7 @@ export function ElencoJogadores() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900">Jogadores</h1>
+      <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Jogadores</h1>
 
       {/* Filtro */}
       <div className="flex flex-wrap gap-2">
@@ -92,7 +92,7 @@ export function ElencoJogadores() {
 export function ElencoComissaoTecnica() {
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900">Comissão Técnica</h1>
+      <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Comissão Técnica</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {comissaoTecnica.map((membro) => (

@@ -15,6 +15,7 @@ import {
   Trophy,
   Heart,
   Building2,
+  X,
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 
@@ -42,7 +43,7 @@ const agendaSubItems = [
   { path: '/agenda/eventos-internos', label: 'Eventos internos', icon: Building2 },
 ];
 
-export default function Sidebar({ onNovoComunicado }) {
+export default function Sidebar({ onNovoComunicado, isOpen, onClose }) {
   const { logout } = useAuth();
   const location = useLocation();
   const isFinanceiro = location.pathname.startsWith('/financeiro');
@@ -68,8 +69,8 @@ export default function Sidebar({ onNovoComunicado }) {
     onNovoComunicado?.() ?? alert('Novo Comunicado - funcionalidade em desenvolvimento.');
   };
 
-  return (
-    <aside className="w-64 min-h-screen bg-ffc-green flex flex-col shrink-0">
+  const sidebarContent = (
+    <>
       {/* Logo FFC */}
       <div className="p-6">
         <div className="text-white font-bold text-2xl tracking-widest">FFC</div>
@@ -90,6 +91,7 @@ export default function Sidebar({ onNovoComunicado }) {
       <nav className="flex-1 px-3 space-y-1">
         <NavLink
           to="/"
+          onClick={onClose}
           className={({ isActive }) =>
             `flex items-center justify-between w-full px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
               isActive ? 'bg-white text-ffc-green' : 'text-white hover:bg-white/10'
@@ -132,6 +134,7 @@ export default function Sidebar({ onNovoComunicado }) {
                   <NavLink
                     key={sub.path}
                     to={sub.path}
+                    onClick={onClose}
                     className={({ isActive }) =>
                       `flex items-center gap-2 px-3 py-2 rounded text-xs font-medium transition-colors ${
                         isActive ? 'bg-white text-ffc-green' : 'text-white/90 hover:bg-white/10'
@@ -173,6 +176,7 @@ export default function Sidebar({ onNovoComunicado }) {
                   <NavLink
                     key={sub.path}
                     to={sub.path}
+                    onClick={onClose}
                     className={({ isActive }) =>
                       `flex items-center gap-2 px-3 py-2 rounded text-xs font-medium transition-colors ${
                         isActive ? 'bg-white text-ffc-green' : 'text-white/90 hover:bg-white/10'
@@ -214,6 +218,7 @@ export default function Sidebar({ onNovoComunicado }) {
                   <NavLink
                     key={sub.path}
                     to={sub.path}
+                    onClick={onClose}
                     className={({ isActive }) =>
                       `flex items-center gap-2 px-3 py-2 rounded text-xs font-medium transition-colors ${
                         isActive ? 'bg-white text-ffc-green' : 'text-white/90 hover:bg-white/10'
@@ -247,6 +252,43 @@ export default function Sidebar({ onNovoComunicado }) {
           Sair
         </button>
       </div>
-    </aside>
+    </>
+  );
+
+  return (
+    <>
+      {/* Overlay mobile - só visível quando drawer aberto */}
+      {onClose && (
+        <div
+          className={`fixed inset-0 z-40 bg-black/50 lg:hidden transition-opacity duration-200 ${
+            isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
+          onClick={onClose}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Sidebar: drawer no mobile, fixo no desktop */}
+      <aside
+        className={`
+          w-64 min-h-screen bg-ffc-green flex flex-col shrink-0
+          lg:static lg:translate-x-0 lg:z-auto
+          fixed inset-y-0 left-0 z-50 transform transition-transform duration-300 ease-out
+          ${(isOpen === true || isOpen === undefined) ? 'translate-x-0' : '-translate-x-full'}
+        `}
+      >
+        {/* Botão fechar no mobile */}
+        {onClose && (
+          <button
+            onClick={onClose}
+            className="lg:hidden absolute top-4 right-4 p-2 rounded-lg text-white hover:bg-white/10 transition-colors"
+            aria-label="Fechar menu"
+          >
+            <X size={20} />
+          </button>
+        )}
+        {sidebarContent}
+      </aside>
+    </>
   );
 }

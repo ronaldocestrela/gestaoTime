@@ -33,7 +33,7 @@ export default function NovoComunicadoModal({ isOpen, onClose }) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">
       {/* Overlay */}
       <div
         className="absolute inset-0 bg-black/50"
@@ -43,7 +43,7 @@ export default function NovoComunicadoModal({ isOpen, onClose }) {
 
       {/* Modal */}
       <div
-        className="relative w-full max-w-md bg-white rounded-xl shadow-xl"
+        className="relative w-full max-w-md max-h-[90vh] sm:max-h-none bg-white rounded-t-xl sm:rounded-xl shadow-xl flex flex-col overflow-hidden"
         role="dialog"
         aria-labelledby="modal-titulo"
         aria-modal="true"
@@ -67,7 +67,7 @@ export default function NovoComunicadoModal({ isOpen, onClose }) {
           </button>
         </div>
 
-        <form id="novo-comunicado-form" onSubmit={handleSubmit} className="p-5 space-y-4">
+        <form id="novo-comunicado-form" onSubmit={handleSubmit} className="flex-1 min-h-0 overflow-y-auto p-5 space-y-4">
           {enviado ? (
             <div className="py-8 text-center">
               <div className="w-12 h-12 rounded-full bg-ffc-green/20 flex items-center justify-center mx-auto mb-3">
@@ -107,7 +107,7 @@ export default function NovoComunicadoModal({ isOpen, onClose }) {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="data" className="block text-sm font-medium text-gray-700 mb-1">
                     Data de publicação
